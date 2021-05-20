@@ -1,10 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 func main() {
-	merchData := merchantDeck()
-	scoreData := scoreDeck()
-	fmt.Printf("%+v\n", merchData)
-	fmt.Printf("%+v\n", scoreData)
+	merchData := merchantDeckCreator()
+	pointData := PointDeckCreator()
+	merchJson, _ := json.MarshalIndent(merchData, "", "    ")
+	pointJson, _ := json.MarshalIndent(pointData, "", "    ")
+	fmt.Print(string(merchJson))
+	fmt.Print(string(pointJson))
 }
