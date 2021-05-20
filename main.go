@@ -20,8 +20,8 @@ func shuffle(deck []interface{}) []interface{} {
 }
 
 func createDecks() ([]byte, []byte) {
-	merchData := merchantDeckCreator()
-	pointData := PointDeckCreator()
+	merchData := DeckCreator("merchant.json")
+	pointData := DeckCreator("point.json")
 	shuffledMerch := shuffle(merchData)
 	shuffledPoint := shuffle(pointData)
 	merchJson, _ := json.MarshalIndent(shuffledMerch, "", "    ")
