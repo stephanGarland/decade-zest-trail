@@ -19,20 +19,28 @@ func shuffle(deck []interface{}) []interface{} {
 	return deck
 }
 
-func createDecks() ([]byte, []byte) {
+func createDecks() ([]interface{}, []interface{}) {
 	merchData := DeckCreator("merchant.json")
 	pointData := DeckCreator("point.json")
 	shuffledMerch := shuffle(merchData)
 	shuffledPoint := shuffle(pointData)
-	merchJson, _ := json.MarshalIndent(shuffledMerch, "", "    ")
-	pointJson, _ := json.MarshalIndent(shuffledPoint, "", "    ")
 
-	return merchJson, pointJson
+	return shuffledMerch, shuffledPoint
+}
+
+func jsonIfyDeck(deck []interface{}) []byte {
+	deckJson, _ := json.MarshalIndent(deck, "", "    ")
+
+	return deckJson
 }
 
 func main() {
 	var merchJson, pointJson = createDecks()
-	fmt.Print(string(merchJson))
-	fmt.Print(string(pointJson))
+	firstFivePoint := pointJson[:5]
+	firstSixMerch := merchJson[:6]
+	firstFivePointJson := jsonIfyDeck(firstFivePoint)
+	firstSixMerchJson := jsonIfyDeck(firstSixMerch)
+	fmt.Print(string(firstFivePointJson))
+	fmt.Print(string(firstSixMerchJson))
 
 }
