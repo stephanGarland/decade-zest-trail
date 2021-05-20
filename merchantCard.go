@@ -1,8 +1,6 @@
 package main
 
-import "fmt"
-
-func deck() {
+func merchantDeck() []MerchantCard {
 	merchantDeck := []MerchantCard{
 		{
 			Card: Card{
@@ -27,5 +25,5 @@ func deck() {
 			},
 		},
 	}
-	fmt.Println(merchantDeck)
+	return merchantDeck
 }

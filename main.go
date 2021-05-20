@@ -1,5 +1,10 @@
 package main
 
+import "fmt"
+
 func main() {
-	deck()
+	merchData := merchantDeck()
+	scoreData := scoreDeck()
+	fmt.Printf("%+v\n", merchData)
+	fmt.Printf("%+v\n", scoreData)
 }
